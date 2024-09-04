@@ -18,6 +18,7 @@
             </a>
             <button class="form_login" type="submit">login</button>
         </div>
+    </header>
     <main>
         <div class="contact-form__content">
             <div class="contact-form__heading">
