@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ContactRequest;
 use App\Models\Contact;
+use App\Http\Requests\ContactRequest;
+use App\Http\Requests\RegisterRequest;
+
 
 class ContactController extends Controller
 {
@@ -12,14 +14,25 @@ class ContactController extends Controller
         return view('index');
     }
 
-    public function confirm(Request $request)
+    public function contact(RegisterRequest $request)
     {
-        $contact = $request->only(['name', 'email', 'tel', ]);
-        return view('confirm', compact('contact'));
+        $contact = $request->only(['name', 'email', 'password',]);
+        return view('contact', compact('contact'));
     }
 
-    public function store(Request $request)
-    {   Contact::create($contact);
-        $contact = $request->only(['name', 'email', 'tel', 'content']);
+    public function confirm(ContactRequest $request)
+    {
+        $contact = $request->only(['name','gender', 'email', 'tel', 'address', 'inquiry_type', 'inquiry_content']);
+        Contact::create($contact);
+
+        return view('confirm', compact('confirm'));
+    }
+
+    public function store(ContactRequest $request)
+    {
+        $contact = $request->only(['name', 'gender', 'email', 'tel', 'address', 'inquiry_type', 'inquiry_content']);
+        Contact::create($contact);
+
+        return view('thanks');
     }
 }
