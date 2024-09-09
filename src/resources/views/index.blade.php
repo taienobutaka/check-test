@@ -12,12 +12,13 @@
 
 <body>
     <header class="header">
-        <div class="header__inner">
-            <a class="header__logo">
-                FashionablyLate
-            </a>
-            <button class="form_login" type="submit">login</button>
+        <div class="header__inner"></div>
+        <div class="header__logo">
+        FashionablyLate
         </div>
+        <form class="form__login_button">
+            <button class="form__login_button-submit" type="submit">login</button>
+        </form>
     </header>
     <main>
         <div class="contact-form__content">
@@ -25,7 +26,7 @@
                 <h2>Register</h2>
             </div>
             <form class="form" action="/contacts/confirm" method="post">
-                @csrf
+            @csrf
                 <div class="form__group">
                     <div class="form__group-title">
                         <span class="form__label--item">お名前</span>
@@ -62,7 +63,7 @@
                     </div>
                     <div class="form__group-content">
                         <div class="form__input--text">
-                            <input type="tel" name="tel" placeholder="例: coachtech1106" value="{{ old('tel') }}" />
+                            <input type="tel" name="tel" placeholder="例: coachtech1106" value="{{ old('password') }}" />
                         </div>
                         <div class="form__error">
                             @error('name')
